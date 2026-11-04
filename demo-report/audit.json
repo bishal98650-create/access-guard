@@ -1,0 +1,106 @@
+{
+  "as_of": "2026-11-04T00:00:00+00:00",
+  "counts": {
+    "critical": 1,
+    "high": 5,
+    "medium": 2
+  },
+  "findings": [
+    {
+      "entity": "demo.alice",
+      "evidence": {
+        "permissions": [
+          "payment:approve",
+          "payment:create",
+          "storage:*"
+        ]
+      },
+      "id": "53d50ec7d21b7f1ef4c4",
+      "remediation": "Separate payment creation and approval responsibilities.",
+      "rule": "IAM-05",
+      "severity": "critical"
+    },
+    {
+      "entity": "demo-bucket",
+      "evidence": {
+        "public": true
+      },
+      "id": "f2085670e0dcb742492c",
+      "remediation": "Validate public exposure; restrict access if not required.",
+      "rule": "CLOUD-01",
+      "severity": "high"
+    },
+    {
+      "entity": "demo-bucket",
+      "evidence": {
+        "encrypted": false
+      },
+      "id": "2e2b82871916b029b873",
+      "remediation": "Enable approved encryption and review key access.",
+      "rule": "CLOUD-02",
+      "severity": "high"
+    },
+    {
+      "entity": "finance",
+      "evidence": {
+        "wildcard_permissions": [
+          "storage:*"
+        ]
+      },
+      "id": "7040e19b8a3c9490819f",
+      "remediation": "Replace wildcard grants with required actions and scope.",
+      "rule": "IAM-01",
+      "severity": "high"
+    },
+    {
+      "entity": "demo.alice",
+      "evidence": {
+        "mfa": false
+      },
+      "id": "d07a12d204961b2336cf",
+      "remediation": "Require MFA after validating account type and recovery procedure.",
+      "rule": "IAM-02",
+      "severity": "high"
+    },
+    {
+      "entity": "demo.former",
+      "evidence": {
+        "assigned_roles": [
+          "reader"
+        ],
+        "status": "terminated"
+      },
+      "id": "ff4d21f7530bff5b47bd",
+      "remediation": "Review and remove residual entitlements through the approved workflow.",
+      "rule": "IAM-04",
+      "severity": "high"
+    },
+    {
+      "entity": "demo-bucket",
+      "evidence": {
+        "logging": false
+      },
+      "id": "f27b829cf681a2aa75ea",
+      "remediation": "Enable audit logging and define retention and review ownership.",
+      "rule": "CLOUD-03",
+      "severity": "medium"
+    },
+    {
+      "entity": "demo.alice",
+      "evidence": {
+        "inactive_days": 307
+      },
+      "id": "d755a239dcc0bf516039",
+      "remediation": "Ask the owner to recertify access or disable the unused account.",
+      "rule": "IAM-03",
+      "severity": "medium"
+    }
+  ],
+  "source_sha256": "9dc4bc3965e70d07bf5a5887c60c49833b5fa60323a6dd775d107cbf17506cd9",
+  "stale_days": 90,
+  "summary": {
+    "resources": 1,
+    "roles": 2,
+    "users": 2
+  }
+}

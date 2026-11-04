@@ -1,0 +1,46 @@
+{
+  "users": [
+    {
+      "id": "demo.alice",
+      "status": "active",
+      "mfa": false,
+      "roles": [
+        "finance"
+      ],
+      "last_login": "2026-01-01T00:00:00Z"
+    },
+    {
+      "id": "demo.former",
+      "status": "terminated",
+      "mfa": true,
+      "roles": [
+        "reader"
+      ],
+      "last_login": "2026-08-01T00:00:00Z"
+    }
+  ],
+  "roles": [
+    {
+      "id": "finance",
+      "permissions": [
+        "payment:create",
+        "payment:approve",
+        "storage:*"
+      ]
+    },
+    {
+      "id": "reader",
+      "permissions": [
+        "document:read"
+      ]
+    }
+  ],
+  "resources": [
+    {
+      "id": "demo-bucket",
+      "public": true,
+      "encrypted": false,
+      "logging": false
+    }
+  ]
+}
