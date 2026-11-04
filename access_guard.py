@@ -7,6 +7,8 @@ import json
 from pathlib import Path
 
 def date(value):
+    if not isinstance(value, str) or not value.strip():
+        raise ValueError('dates must be nonempty ISO timestamp strings with a timezone')
     parsed = datetime.fromisoformat(value.replace('Z', '+00:00'))
     if parsed.tzinfo is None: raise ValueError('dates require a timezone')
     return parsed.astimezone(timezone.utc)
